@@ -1,0 +1,37 @@
+package main;
+
+import org.bukkit.plugin.java.JavaPlugin;
+
+import recipes.NskList;
+import recipes.TweakedRecipes;
+
+public class CraftingTweaksMain extends JavaPlugin{
+	private static CraftingTweaksMain instace;
+	public NskList nskList;
+	public TweakedRecipes tweakedRecipes;
+
+	public void onEnable() {
+		instace = this;
+		registerInstances();
+		nskList.registerNsK();
+		tweakedRecipes.registerRecipes();
+		
+		loadConfig();
+		
+	}
+	public void onDisable() {
+		
+	}
+	public static CraftingTweaksMain getInstance() {
+		return instace;
+	}
+	private void loadConfig() {
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+	}
+	private void registerInstances() {
+		nskList = new NskList();
+		tweakedRecipes = new TweakedRecipes();
+	}
+	
+}
