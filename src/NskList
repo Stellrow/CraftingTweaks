@@ -1,0 +1,35 @@
+package recipes;
+
+import org.bukkit.NamespacedKey;
+
+import main.CraftingTweaksMain;
+
+public class NskList {
+	private CraftingTweaksMain pl = CraftingTweaksMain.getInstance();
+	public NamespacedKey recipeChest,recipeRepeator, recipeHopper,recipeTrappedChest,recipePaper,recipeBookShelf,recipeString,recipeBlazerod
+	,recipeVine,recipeDirt,recipeBamboo,recipeElytra,recipeStick,recipeLantern,recipeQuartz,recipeSaddle,recipeSeaPickle;
+	public void registerNsK() {
+		recipeHopper = cN("hopper");
+		recipeChest = cN("chest");
+		recipeRepeator = cN("repeator");
+		recipeTrappedChest = cN("trappedChest");
+		recipePaper = cN("paper");
+		recipeBookShelf = cN("bookshelf");
+		recipeString = cN("string");
+		recipeBlazerod = cN("blazerod");
+		recipeVine = cN("vine");
+		recipeDirt = cN("dirt");
+		recipeBamboo = cN("bamboo");
+		recipeElytra = cN("elytra");
+		recipeStick = cN("stick");
+		recipeLantern = cN("lantern");
+		recipeQuartz = cN("quartz");
+		recipeSaddle = cN("saddle");
+		recipeSeaPickle = cN("seapickle");
+	}
+	private NamespacedKey cN(String name) {
+		NamespacedKey toRet = new NamespacedKey(pl,"craftingtweaks.recipe."+name);
+		return toRet;
+	}
+
+}
