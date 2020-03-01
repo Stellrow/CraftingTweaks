@@ -1,0 +1,93 @@
+package recipes;
+
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
+
+import main.CraftingTweaksMain;
+
+public class TweakedRecipes {
+	private CraftingTweaksMain pl = CraftingTweaksMain.getInstance();
+	
+	public void registerRecipes() {
+		registerRecipe(Material.CHEST,4,pl.nskList.recipeChest,"WWW","W W","WWW","chestTweak",new char[] {'W'},new Material[] {Material.OAK_LOG});
+		registerRecipe(Material.REPEATER,1,pl.nskList.recipeRepeator,"R R","SRS","CCC","repeatorTweak",new char[]{'R','S','C'},new Material[] {Material.REDSTONE,Material.STICK,Material.STONE});
+		registerRecipe(Material.HOPPER,1,pl.nskList.recipeHopper,"IWI","IWI"," I ","hopperTweak",new char[] {'I','W'},new Material[]{Material.IRON_INGOT,Material.OAK_LOG});
+		registerRecipe(Material.TRAPPED_CHEST,1,pl.nskList.recipeTrappedChest,"I  ","SC ","W  ","trappedChestTweak",new char[] {'I','S','C','W'},new Material[] {Material.IRON_INGOT,Material.STRING,Material.CHEST,Material.OAK_PLANKS});
+		registerSRecipe(Material.PAPER,3,pl.nskList.recipePaper,"paperTweak",Material.BOOK);
+		registerSRecipe(Material.BOOK,3,pl.nskList.recipeBookShelf,"bookShelfTweak",Material.BOOKSHELF);
+		registerSRecipe(Material.STRING,4,pl.nskList.recipeString,"stringTweak",Material.WHITE_WOOL);
+		registerSRecipe(Material.BLAZE_ROD,1,pl.nskList.recipeBlazerod,"blazeRodTweak",Material.BLAZE_POWDER,2);
+		registerRecipe(Material.VINE,6,pl.nskList.recipeVine,"SS ","SS ","SS ","vineTweak",new char[] {'S'},new Material[] {Material.SLIME_BALL});
+		registerSRecipe(Material.DIRT,1,pl.nskList.recipeDirt,"dirtTweak",Material.GRASS);
+		registerSRecipe(Material.BAMBOO,2,pl.nskList.recipeBamboo,"bambooTweak",Material.STICK,2);
+		registerRecipe(Material.ELYTRA,1,pl.nskList.recipeElytra,"elytraTweak","EEE","EDE","FCF",new char[] {'E','D','F','L'},new Material[] {Material.ENDER_EYE,Material.DIAMOND_BLOCK,Material.FEATHER,Material.LEATHER});
+		registerSRecipe(Material.STICK,16,pl.nskList.recipeStick,"stickTweak",Material.OAK_LOG,2);
+		registerSRecipe(Material.LANTERN,1,pl.nskList.recipeLantern,"lanternTweak",Material.IRON_INGOT,Material.TORCH);
+		registerSRecipe(Material.QUARTZ,4,pl.nskList.recipeQuartz,"quartzTweak",Material.QUARTZ_BLOCK);
+		registerRecipe(Material.SADDLE,1,pl.nskList.recipeSaddle,"LLL","SIS","   ","saddleTweak",new char[] {'L','S','I'},new Material[] {Material.LEATHER,Material.STRING,Material.IRON_INGOT});
+		registerSRecipe(Material.SEA_PICKLE,1,pl.nskList.recipeSeaPickle,"seapickleTweak",Material.KELP,Material.TORCH);
+	}
+	
+	private void registerRecipe(Material mat,int count,NamespacedKey nsk,String shape1,String shape2,String shape3,String checkBool,char keys[],Material ings[]) {
+		ItemStack item = new ItemStack(mat,count);
+		ShapedRecipe recipe = new ShapedRecipe(nsk,item);
+		recipe.shape(shape1,shape2,shape3);
+		recipe.setIngredient(keys[0], ings[0]);
+		if(keys.length>1) {
+			recipe.setIngredient(keys[1], ings[1]);
+		}
+		if(keys.length>2) {
+			recipe.setIngredient(keys[2], ings[2]);
+		}
+		if(keys.length>3) {
+			recipe.setIngredient(keys[3], ings[3]);
+		}
+		if(getBool(checkBool)) {
+			pl.getServer().addRecipe(recipe);
+		}
+		
+	}
+	private void registerSRecipe(Material mat,int count,NamespacedKey nsk,String boolCheck,Material ing1) {
+		ItemStack item = new ItemStack(mat,count);
+		ShapelessRecipe recipe = new ShapelessRecipe(nsk,item);
+		recipe.addIngredient(ing1);
+		if(getBool(boolCheck)) {
+			pl.getServer().addRecipe(recipe);
+		}
+		
+	}
+	private void registerSRecipe(Material mat,int count,NamespacedKey nsk,String boolCheck,Material ing1,int ing1count) {
+		ItemStack item = new ItemStack(mat,count);
+		ShapelessRecipe recipe = new ShapelessRecipe(nsk,item);
+		recipe.addIngredient(ing1count, ing1);
+		if(getBool(boolCheck)) {
+			pl.getServer().addRecipe(recipe);
+		}
+		
+	}
+	private void registerSRecipe(Material mat,int count,NamespacedKey nsk,String boolCheck,Material ing1,Material ing2) {
+		ItemStack item = new ItemStack(mat,count);
+		ShapelessRecipe recipe = new ShapelessRecipe(nsk,item);
+		recipe.addIngredient(ing1);
+		recipe.addIngredient(ing2);
+		if(getBool(boolCheck)) {
+			pl.getServer().addRecipe(recipe);
+		}
+		
+	}
+	
+	
+	
+	
+	private boolean getBool(String path) {
+		boolean toRet = false;
+		if(pl.getConfig().getBoolean("Recipes."+path)) {
+			toRet = true;
+		}
+		return toRet;
+	}
+
+}
