@@ -1,5 +1,5 @@
 # CraftingTweaks
-Adds additional recipes to the standard Minecraft 1.14
+A lightweight spigot plugin made for Minecraft 1.14,adds extra recipes to ease the crafting and also allows crafting of items that can't be normally crafted
 
 
 
