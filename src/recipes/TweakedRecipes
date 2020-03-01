@@ -21,7 +21,7 @@ public class TweakedRecipes {
 		registerSRecipe(Material.STRING,4,pl.nskList.recipeString,"stringTweak",Material.WHITE_WOOL);
 		registerSRecipe(Material.BLAZE_ROD,1,pl.nskList.recipeBlazerod,"blazeRodTweak",Material.BLAZE_POWDER,2);
 		registerRecipe(Material.VINE,6,pl.nskList.recipeVine,"SS ","SS ","SS ","vineTweak",new char[] {'S'},new Material[] {Material.SLIME_BALL});
-		registerSRecipe(Material.DIRT,1,pl.nskList.recipeDirt,"dirtTweak",Material.GRASS);
+		registerSRecipe(Material.DIRT,1,pl.nskList.recipeDirt,"dirtTweak",Material.GRASS_BLOCK);
 		registerSRecipe(Material.BAMBOO,2,pl.nskList.recipeBamboo,"bambooTweak",Material.STICK,2);
 		registerRecipe(Material.ELYTRA,1,pl.nskList.recipeElytra,"EEE","EDE","FLF","elytraTweak",new char[] {'E','D','F','L'},new Material[] {Material.ENDER_EYE,Material.DIAMOND_BLOCK,Material.FEATHER,Material.LEATHER});
 		registerSRecipe(Material.STICK,16,pl.nskList.recipeStick,"stickTweak",Material.OAK_LOG,2);
